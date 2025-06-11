@@ -103,6 +103,20 @@ img {
     color: #7e6204;
 }
 
+.dynaguide{
+    color: #5753A3;
+}
+.sampling{
+    color: #89C5EC;
+}
+.gc{
+    color: #E37B3A;
+}
+.baseline{
+    color: #EFCD76;
+}
+
+
 /* Media queries for responsive design */
 @media screen and (max-width: 768px) {
     #main {

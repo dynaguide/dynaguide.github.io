@@ -42,14 +42,14 @@ Active Dynamic Guidance" />
 
                 <h2>Video Overview</h2>
                 
-                <iframe width="900" height="500" 
+                <!-- <iframe width="900" height="500" 
                         style="display: block; margin: 0 auto;"
                         src="https://www.youtube.com/embed/0F_DhnyKdOE" 
                         title="Long Video" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen>
-                </iframe> 
+                </iframe>  -->
             </section>
             
             <section>
@@ -122,8 +122,9 @@ Active Dynamic Guidance" />
                     <img src="assets/exp1.png" alt="DynaGuid Exp 1" style="max-width: 85%;" />
                 </div>
                 <p>
-                    In the CALVIN environment, DynaGuide can take a diverse base policy and steer it to a target behavior with an average success rate of 70%, on behaviors involving articulated parts (like drawers, switches, and buttons). It outperforms the DynaGuide-Sampling baseline, which samples from the unaltered base policy and uses the same dynamics model to pick the best action. It also outperforms a Position Guidance method that uses diffusion guidance to steer the robot to a keypoint in space. However, a specially-trained goal-conditioned policy will perform nearly perfectly in this setup, which is expected. So, what happens when the guidance conditions are less perfect? 
-                </p>
+                    In the CALVIN environment, DynaGuide can take a diverse base policy and steer it to a target behavior with an average success rate of 70%, on behaviors involving articulated parts (like drawers, switches, and buttons). It outperforms the DynaGuide-Sampling baseline, which samples from the unaltered base policy and uses the same dynamics model to pick the best action. It also outperforms a Position Guidance method that uses diffusion guidance to steer the robot to a keypoint in space. However, a specially-trained goal-conditioned policy will perform nearly perfectly in this setup, which is expected. </p>
+                <p>So, what happens when the guidance conditions are less perfect? </p>
+                
 
 
                 <h3>DynaGuide Remains Robust to Lower-Quality Objectives</h3>
@@ -173,19 +174,19 @@ Active Dynamic Guidance" />
                         <video controls autoplay muted playsinline>
                             <source src="assets/preference_base.mp4">
                         </video> 
-                        <p>Base Policy: 55% Red Cup, 45% Grey Cup</p>
+                        <p>Base Policy: 55% <span style="color: rgb(118, 1, 1);font-weight: bold;">Red</span> Cup, 45% <span style="color: rgba(78, 78, 78, 0.886);font-weight: bold;">Grey</span> Cup</p>
                     </div> 
                     <div class="video-container" style="flex:1;">
                         <video controls autoplay muted playsinline>
                             <source src="assets/preference_red.mp4">
                         </video> 
-                        <p>Guide to Red: 75% Red Cup, 25% Grey Cup</p>
+                        <p>Guide to Red: 75% <span style="color: rgb(118, 1, 1);font-weight: bold;">Red</span> Cup, 25% <span style="color: rgba(78, 78, 78, 0.886);font-weight: bold;">Grey</span> Cup</p>
                     </div> 
                      <div class="video-container" style="flex:1;">
                         <video controls autoplay muted playsinline>
                             <source src="assets/preference_gray.mp4">
                         </video> 
-                        <p>Guide to Grey: 30% Red Cup, 70% Grey Cup.</p>
+                        <p>Guide to Grey: 30% <span style="color: rgb(118, 1, 1);font-weight: bold;">Red</span> Cup, 70% <span style="color: rgba(78, 78, 78, 0.886);font-weight: bold;">Grey</span> Cup.</p>
                     </div> 
                 </div>
                 
@@ -197,13 +198,13 @@ Active Dynamic Guidance" />
                         <video controls autoplay muted playsinline>
                             <source src="assets/hidden_base.mp4">
                         </video> 
-                        <p>Base Policy: 25% Red Cup, 75% Grey Cup</p>
+                        <p>Base Policy: 25% <span style="color: rgb(118, 1, 1);font-weight: bold;">Red</span> Cup, 75% <span style="color: rgba(78, 78, 78, 0.886);font-weight: bold;">Grey</span> Cup</p>
                     </div> 
                     <div class="video-container" style="flex:1;">
                         <video controls autoplay muted playsinline>
                             <source src="assets/hidden_ours.mp4">
                         </video> 
-                        <p>Guide to Red: 80% Red Cup, 20% Grey Cup</p>
+                        <p>Guide to Red: 80% <span style="color: rgb(118, 1, 1);font-weight: bold;">Red</span> Cup, 20% <span style="color: rgba(78, 78, 78, 0.886);font-weight: bold;">Grey</span> Cup</p>
                     </div>
                 </div>
 
@@ -214,13 +215,13 @@ Active Dynamic Guidance" />
                         <video controls autoplay muted playsinline>
                             <source src="assets/mouse_base.mp4">
                         </video> 
-                        <p>Base Policy: 85% Red Cup, 15% Mouse</p>
+                        <p>Base Policy: 85% <span style="color: rgb(118, 1, 1);font-weight: bold;">Red</span> Cup, 15% <span style="color: rgba(47, 47, 47, 0.886);font-weight: bold;">Mouse</span></p>
                     </div> 
                     <div class="video-container" style="flex:1;">
                         <video controls autoplay muted playsinline>
                             <source src="assets/mouse_ours.mp4">
                         </video> 
-                        <p>Guide to Mouse: 70% Red Cup, 30% Mouse</p>
+                        <p>Guide to Mouse: 70% <span style="color: rgb(118, 1, 1);font-weight: bold;">Red</span> Cup, 30% <span style="color: rgba(47, 47, 47, 0.886);font-weight: bold;">Mouse</span></p>
                     </div>
                 </div>
                 <!-- <div class="text-video-container">
@@ -240,10 +241,14 @@ Active Dynamic Guidance" />
                         <source src="assets/compressed-dexmachina-voc-video.mp4">
                     </video> 
                 </div>   -->
+                <!-- <h2>Acknowldgements</h2>
+                <p>
+                Thank you to the members of REAL Lab at Stanford University for providing feedbacks on manuscript drafts and project direction. 
+                To M.W., H.W., L.S., J.T., N.S., C.F., and others: thanks for the music and the living. 
+
+                </p> -->
             </section>
-
-
-
+        
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.poptrox.min.js"></script>
