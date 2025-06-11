@@ -1,0 +1,101 @@
+body {
+    color: #2d2e2e;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+#main {
+    padding: 5em 2em 1em;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+h1 {
+    text-align: center;
+    color: #303030;
+    font-size: 2rem;
+    margin-bottom: 0.25em;
+    font-weight: 500;
+}
+
+h2 {
+    text-align: center;
+    color: #E37B3A;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 1em;
+}
+
+h3 {
+    text-align: center;
+    color: #5753A3;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 1em;
+}
+
+p {
+    /* align to the center of main */
+    /* text-align: justify; */
+    text-align: center;
+    margin: 0 auto;
+    padding: 0em 0; 
+    color: #303030;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 85%;
+    margin-bottom: 1em;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin: 1em 0;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+.video-container video {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Special styling for the main teaser video */
+#four .video-container video {
+    width: 90%;
+    max-width: 800px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 0.5em auto;
+    display: block;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    #main {
+        width: 95%;
+        padding: 3em 1em 1em;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+}

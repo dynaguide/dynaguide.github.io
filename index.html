@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>DynaGuide: Steering Diffusion Polices with
+Active Dynamic Guidance</title> 
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet' type='text/css'>
+        <meta property="og:url" content="https://project-dexmachina.github.io" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="DynaGuide: Steering Diffusion Polices with
+Active Dynamic Guidance"/>
+        <meta property="og:description" content="DynaGuide: Steering Diffusion Polices with
+Active Dynamic Guidance" />
+        <link rel="stylesheet" href="styles.css">   
+    </head>
+
+    <body id="top">
+        <div id="main">
+            <section id="four">
+                <h1>
+                    DynaGuide: Steering Diffusion Polices with <br> Active Dynamic Guidance
+                </h1>  
+                <p></p>
+                <h3 style="text-align: center; font-size: 100%; color: #2d2e2e">
+                    <a href="https://maximiliandu.com/">Maximilian Du</a><sup>1</sup> 
+                    <a href="https://shurans.github.io/">Shuran Song</a><sup>1</sup>
+				</h3>
+                <h3 style="text-align: center;font-size: 80%; color: #2d2e2e"> 
+                        <sup>1</sup> Stanford University &nbsp 
+                        <img style="width: 13%; vertical-align: middle;" src="assets/stanford_logo.png"/> 
+                        <!-- <div class="image-container"> 
+                            <img style="display: inline-block; width: 13%;" src="assets/stanford_logo.png"/> 
+                        </div> -->
+                        
+                </h3> 
+                <h3 style="text-align: center;font-size: 100%; color: #2d2e2e">
+                    <a href="LINKHERE">arXiv</a>
+                    &nbsp <a href="https://github.com/MaxDu17/DynaGuide">Code</a>
+
+
+                <div class="image-container">
+                                    <img src="assets/pullfig.png" alt="DynaGuide Teaser"  style="max-width: 50%; margin-top: 50px" /> 
+                </div>
+
+                <!-- <div class="video-container" >
+                    <video controls autoplay muted playsinline>
+                        <source src="compressed-dexmachina-deanon-teaser.mp4"> 
+                    </video> 
+                </div>  -->
+            
+                <h2>
+                    What is DynaGuide?
+                </h2> 
+                <p>
+                    <i>Can we steer a pretrained robot policy without changing weights, sampling excessively, or requiring goal conditioning? </i>
+                </p>
+                <p>
+                    We present a novel policy steering approach, DynaGuide, that accomplishes this.
+DynaGuide works with any diffusion policy by influencing the action diffusion process with an expressive guidance signal. This guidance can steer diverse policies to one behavior, multiple behaviors, and even avoid behaviors. 
+In our experiments, we show that DynaGuide is robust and offers advantages in performance and features compared to relevant baselines. We also show that DynaGuide works on off-the-shelf policies with a real robot.
+                </p> 
+            </section> 
+
+           
+            <section>
+                <h2>Method</h2>
+                
+                <h3>
+                    Overview
+                </h3>
+
+                <p>
+                    We propose DexMachina, a novel algorithm that achieves functional retargeting for a variety of hands and objects. 
+                    At a high-level, we train an RL policy using a virtual object controller curriculum, guided by both a task reward and auxiliary rewards.
+                </p> 
+                <div class="image-container">
+                    <img src="assets/dexmachina-method.jpg" alt="DexMachina Method" style="max-width: 85%;" />
+                </div>
+ 
+                <h3>Task and Auxiliary Rewards</h3>
+                <p>
+                    Given one demonstration, we first use its object states to define task reward. Next, we run a collision-aware kinematic retargeting procedure, which produces reference dexterous hand motions: we use them for motion imitation reward and residual wrist actions. We then approximate hand-object contact positions, which we use to define contact reward. 
+                </p>
+                <div class="video-container">
+                    <video controls autoplay muted playsinline>
+                        <source src="assets/compressed-dexmachina-method-video.mp4">
+                    </video> 
+                </div>   
+                <!-- <div class="text-video-container">
+                    <p>
+                        Given one demonstration, we first use its object states to define task reward. Next, we run a collision-aware kinematic retargeting procedure, which produces reference dexterous hand motions: we use them for motion imitation reward and residual wrist actions. We then approximate hand-object contact positions, which we use to define contact reward.
+                    </p>
+                    <div class="video-container">
+                        <video controls autoplay muted playsinline>
+                            <source src="assets/compressed-dexmachina-method-video.mp4">
+                        </video>
+                    </div>
+                </div> -->
+
+                <h3>
+                    Virtual Object Controller Curriculum
+                </h3>
+                <p>
+                    The reward terms and residual action learning can sometimes achieve short and simple tasks, but struggle on long-horizon clips with complex contacts, where the policy often experiences catastrophic early failures.
+                    This motivates us to propose a novel curriculum approach, to let the policy explore different strategies in a less fragile setting. 
+                </p>
+                <div class="video-container">
+                    <video controls autoplay muted playsinline>
+                        <source src="assets/compressed-dexmachina-voc-video.mp4">
+                    </video> 
+                </div>  
+            </section>
+
+             <!-- embed a youtube video -->
+            <section>
+                <h2>Long Naratted Video</h2>
+                
+                <iframe width="900" height="500" 
+                        style="display: block; margin: 0 auto;"
+                        src="https://www.youtube.com/embed/0F_DhnyKdOE" 
+                        title="Long Video" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                </iframe> 
+            </section>
+         
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.poptrox.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body> 
+</html>
