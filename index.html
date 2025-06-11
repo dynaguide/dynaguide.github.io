@@ -7,7 +7,8 @@ Active Dynamic Guidance</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/css/main.css" />
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet' type='text/css'>
-        <meta property="og:url" content="https://project-dexmachina.github.io" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <meta property="og:url" content="https://dynaguide.github.io/" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="DynaGuide: Steering Diffusion Polices with
 Active Dynamic Guidance"/>
@@ -39,55 +40,189 @@ Active Dynamic Guidance" />
                     <a href="LINKHERE">arXiv</a>
                     &nbsp <a href="https://github.com/MaxDu17/DynaGuide">Code</a>
 
-
-                <div class="image-container">
-                                    <img src="assets/pullfig.png" alt="DynaGuide Teaser"  style="max-width: 50%; margin-top: 50px" /> 
-                </div>
-
-                <!-- <div class="video-container" >
-                    <video controls autoplay muted playsinline>
-                        <source src="compressed-dexmachina-deanon-teaser.mp4"> 
-                    </video> 
-                </div>  -->
+                <h2>Video Overview</h2>
+                
+                <iframe width="900" height="500" 
+                        style="display: block; margin: 0 auto;"
+                        src="https://www.youtube.com/embed/0F_DhnyKdOE" 
+                        title="Long Video" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                </iframe> 
+            </section>
             
+            <section>
                 <h2>
                     What is DynaGuide?
                 </h2> 
-                <p>
-                    <i>Can we steer a pretrained robot policy without changing weights, sampling excessively, or requiring goal conditioning? </i>
-                </p>
-                <p>
-                    We present a novel policy steering approach, DynaGuide, that accomplishes this.
-DynaGuide works with any diffusion policy by influencing the action diffusion process with an expressive guidance signal. This guidance can steer diverse policies to one behavior, multiple behaviors, and even avoid behaviors. 
-In our experiments, we show that DynaGuide is robust and offers advantages in performance and features compared to relevant baselines. We also show that DynaGuide works on off-the-shelf policies with a real robot.
-                </p> 
-            </section> 
 
-           
-            <section>
-                <h2>Method</h2>
-                
-                <h3>
-                    Overview
-                </h3>
+                <div class="flex_container">
+                    <div style="flex:1.5;">
+              
+                        <p>
+                            <i>Can we <span class="emph">steer</span> a pretrained robot policy without changing weights, sampling excessively, or requiring goal conditioning? </i>
+                        </p>
+                        <hr style="
+                        width: 100px;
+                        height: 3px;
+                        background-color: black;
+                        border: none;
+                        border-radius: 10px;
+                        margin: 1em auto;
+                        ">                        
+                        <p>
+                            We present a novel policy steering approach, DynaGuide, that accomplishes this.
+        DynaGuide works with any diffusion policy by influencing the action diffusion process with an expressive guidance signal. This guidance can steer diverse policies to one behavior, multiple behaviors, and even avoid behaviors. 
+        In our experiments, we show that DynaGuide is robust and offers advantages in performance and features compared to relevant baselines. We also show that DynaGuide works on off-the-shelf policies with a real robot.
+                        </p> 
+                    </div>
 
-                <p>
-                    We propose DexMachina, a novel algorithm that achieves functional retargeting for a variety of hands and objects. 
-                    At a high-level, we train an RL policy using a virtual object controller curriculum, guided by both a task reward and auxiliary rewards.
-                </p> 
-                <div class="image-container">
-                    <img src="assets/dexmachina-method.jpg" alt="DexMachina Method" style="max-width: 85%;" />
+                    <div class="image-container"style="flex:1;">
+                                        <img src="assets/pullfig.png" alt="DynaGuide Teaser">
+                    </div>
                 </div>
- 
-                <h3>Task and Auxiliary Rewards</h3>
+
+
+                <h3>
+                    How does DynaGuide Work?
+                </h3> 
+
+                <div class="flex_container">
+                    <div class="image-container"style="flex:1;">
+                                        <img src="assets/method.png" alt="DynaGuide Method">
+                    </div>
+                    <div style="flex:1.2;">                   
+                        <p>
+                            DynaGuide has two components: 1) the latent dynamics model and 2) the diffusion guidance. During inference-time, we supply DynaGuide with a set of guidance conditions: desired outcomes and undesired outcomes, all as visual observations.
+                        </p>
+                        <p>
+                            The latent dynamics model predicts a future outcome based on the robot's current visual observation and proposed action. We use latent distance to compare this future outcome to the embeddings of the guidance conditions: visual observations of desired / undesired outcomes (B).
+                        </p>
+                        <p>
+                            This distance creates a differentiable metric that tells us how to change the current actions to better meet the guidance conditions. We add this gradient to the noise prediction of the base policy in the action diffusion process (A). 
+                        </p> 
+                    </div>
+                </div>
+
+
+                <div class="image-container">
+                    <img src="assets/toy.png" alt="DynaGuide Toy Experiment" style="max-width: 85%;" />
+                </div>
                 <p>
-                    Given one demonstration, we first use its object states to define task reward. Next, we run a collision-aware kinematic retargeting procedure, which produces reference dexterous hand motions: we use them for motion imitation reward and residual wrist actions. We then approximate hand-object contact positions, which we use to define contact reward. 
+                    <i>DynaGuide on a Toy Example: In this toy example where the base policy navigates to any colored square, DynaGuide is able to steer the agent towards the <span style="color: #0b5394"> blue square</span>. DynaGuide works with the base policy to find a mode that best satisfies the guidance conditions.</i>
                 </p>
-                <div class="video-container">
-                    <video controls autoplay muted playsinline>
-                        <source src="assets/compressed-dexmachina-method-video.mp4">
-                    </video> 
-                </div>   
+            </section>
+            <section>
+                <h2>
+                    Results: Simulation
+                </h2> 
+                <h3>DynaGuide can Steer Policies to Individual Behaviors</h3>
+                 <div class="image-container">
+                    <img src="assets/exp1.png" alt="DynaGuid Exp 1" style="max-width: 85%;" />
+                </div>
+                <p>
+                    In the CALVIN environment, DynaGuide can take a diverse base policy and steer it to a target behavior with an average success rate of 70%, on behaviors involving articulated parts (like drawers, switches, and buttons). It outperforms the DynaGuide-Sampling baseline, which samples from the unaltered base policy and uses the same dynamics model to pick the best action. It also outperforms a Position Guidance method that uses diffusion guidance to steer the robot to a keypoint in space. However, a specially-trained goal-conditioned policy will perform nearly perfectly in this setup, which is expected. So, what happens when the guidance conditions are less perfect? 
+                </p>
+
+
+                <h3>DynaGuide Remains Robust to Lower-Quality Objectives</h3>
+                 <div class="image-container">
+                    <img src="assets/exp2.png" alt="DynaGuid Exp 2" style="max-width: 85%;" />
+                </div>
+                <p>
+                    Clean guidance condition images may be hard to collect when the environment is dynamic. When we try to steer the base policy towards movable objects (colored cubes, left graph), the guidance condition images might be conceptually similar but visually distinct, because the cubes can be arranged anywhere. All performances drop, but the sampling baseline and goal conditioned baseline are affected more than DynaGuide. This effect is even more pronounced when guidance conditions images randomize the states of everything other than the target object (right graph). As the guidance condition images become lower in quality, goal-conditioned baselines become out of distribution and drop quickly in performance. DynaGuide is still affected, but the strong latent dynamics model ensures its robustness. 
+                </p>
+
+                 <div class="flex_container">
+                    <div class="image-container"style="flex:1.2;margin-top: 2em">
+                                        <img src="assets/exp3.png" alt="DynaGuide Exp 3">
+                    </div>
+                    <div style="flex:1;">     
+                        <h3>DynaGuide can Steer with Complex Objectives</h3>
+                        <p>
+                            Sometimes steering a policy means accepting multiple behaviors or avoiding other behaviors. DynaGuide uses latent distances to guidance conditions, so it can leverage sets of guidance conditions representing multiple acceptable and unacceptable behaviors. DynaGuide's active guidance performs better on these complex objectives than sampling approaches.
+                        </p>
+                    </div>
+                </div>
+
+                <h3>DynaGuide Enhances Underrepresented Behaviors</h3>
+                <div class="image-container">
+                                    <img src="assets/exp4.png" alt="DynaGuide Exp 4">
+                </div>
+                <p>
+                    Not all behaviors are equally represented in the training set of the base policy. Sampling approaches can boost the likelihood of a rare behavior, but it is still affected by the likelihood of the correct action being sampled by the base policy. Active guidance in DynaGuide allows the dynamics model to seek rare behaviors directly in the diffusion process, leading to a 40% steering success rate on a behavior that is represented by only 1% of the training data. 
+                </p>
+           
+            </section>
+            <section>
+                <h2>
+                    Results: Real Robot
+                </h2> 
+                <div class="image-container">
+                                    <img src="assets/real_robot.png" alt="DynaGuide Real Robot" style="max-width: 85%;">
+                </div>
+                <p>
+                    Unlike goal conditoning and other specially-trained policies, DynaGuide can work on top of any diffusion policy. We test this by steering an off-the-shelf cup arrangement policy to express color preference and even to interact with a novel object. Below, we show individual videos and results.
+                </p>
+
+                <h3>Expressing Color Preference on a Real Robot</h3>
+                <p>We present the robot with a choice of two different colored cups equidistant from the robot. The base policy does not have a color preference, but DynaGuide is able to steer this policy towards majority grey cups and towards majority red cups.</p>
+                 <div class="flex_container">
+                    <div class="video-container" style="flex:1;">
+                        <video controls autoplay muted playsinline>
+                            <source src="assets/preference_base.mp4">
+                        </video> 
+                        <p>Base Policy: 55% Red Cup, 45% Grey Cup</p>
+                    </div> 
+                    <div class="video-container" style="flex:1;">
+                        <video controls autoplay muted playsinline>
+                            <source src="assets/preference_red.mp4">
+                        </video> 
+                        <p>Guide to Red: 75% Red Cup, 25% Grey Cup</p>
+                    </div> 
+                     <div class="video-container" style="flex:1;">
+                        <video controls autoplay muted playsinline>
+                            <source src="assets/preference_gray.mp4">
+                        </video> 
+                        <p>Guide to Grey: 30% Red Cup, 70% Grey Cup.</p>
+                    </div> 
+                </div>
+                
+
+                <h3>Seeking Underrepresented Behaviors on a Real Robot</h3>
+                <p>We place a red cup directly behind a grey cup. The base policy typically grabs the closest cup, but DynaGuide is able to coax the base policy to move past the close grey cup and grab the red cup.</p>
+                 <div class="flex_container">
+                    <div class="video-container" style="flex:1;">
+                        <video controls autoplay muted playsinline>
+                            <source src="assets/hidden_base.mp4">
+                        </video> 
+                        <p>Base Policy: 25% Red Cup, 75% Grey Cup</p>
+                    </div> 
+                    <div class="video-container" style="flex:1;">
+                        <video controls autoplay muted playsinline>
+                            <source src="assets/hidden_ours.mp4">
+                        </video> 
+                        <p>Guide to Red: 80% Red Cup, 20% Grey Cup</p>
+                    </div>
+                </div>
+
+                <h3>Seeking Novel Behaviors on a Real Robot</h3>
+                <p>We give the robot a choice between a red cup and a computer mouse. The base policy is trained only on cups, so it generally avoids the novel object. The dynamics model is trained on a larger datset of interactions including computer mice, so it can steer the robot to double the number of interactions with the novel object. </p>
+                 <div class="flex_container">
+                    <div class="video-container" style="flex:1;">
+                        <video controls autoplay muted playsinline>
+                            <source src="assets/mouse_base.mp4">
+                        </video> 
+                        <p>Base Policy: 85% Red Cup, 15% Mouse</p>
+                    </div> 
+                    <div class="video-container" style="flex:1;">
+                        <video controls autoplay muted playsinline>
+                            <source src="assets/mouse_ours.mp4">
+                        </video> 
+                        <p>Guide to Mouse: 70% Red Cup, 30% Mouse</p>
+                    </div>
+                </div>
                 <!-- <div class="text-video-container">
                     <p>
                         Given one demonstration, we first use its object states to define task reward. Next, we run a collision-aware kinematic retargeting procedure, which produces reference dexterous hand motions: we use them for motion imitation reward and residual wrist actions. We then approximate hand-object contact positions, which we use to define contact reward.
@@ -99,34 +234,15 @@ In our experiments, we show that DynaGuide is robust and offers advantages in pe
                     </div>
                 </div> -->
 
-                <h3>
-                    Virtual Object Controller Curriculum
-                </h3>
-                <p>
-                    The reward terms and residual action learning can sometimes achieve short and simple tasks, but struggle on long-horizon clips with complex contacts, where the policy often experiences catastrophic early failures.
-                    This motivates us to propose a novel curriculum approach, to let the policy explore different strategies in a less fragile setting. 
-                </p>
+<!--               
                 <div class="video-container">
                     <video controls autoplay muted playsinline>
                         <source src="assets/compressed-dexmachina-voc-video.mp4">
                     </video> 
-                </div>  
+                </div>   -->
             </section>
 
-             <!-- embed a youtube video -->
-            <section>
-                <h2>Long Naratted Video</h2>
-                
-                <iframe width="900" height="500" 
-                        style="display: block; margin: 0 auto;"
-                        src="https://www.youtube.com/embed/0F_DhnyKdOE" 
-                        title="Long Video" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                </iframe> 
-            </section>
-         
+
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
